@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form>
+      <label htmlFor="userID">User ID:</label>
+      <input type="text" id="userID" name="userID" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const userID = form.userID.value.trim();
+        const isExpert = userID.startsWith("EXPERT_");
+        if (isExpert) {
+          window.location.href = `expert.html?expertID=${userID}`;
+        } else {
+          window.location.href = `customer.html?customerID=${userID}`;
+        }
+      });
+    </script>
+  </body>
+</html>
